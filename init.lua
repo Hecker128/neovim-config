@@ -1,3 +1,5 @@
+local is_windows = vim.fn.has("macunix") == false
+
 -- Custom key maps/remaps/unmaps.
 vim.keymap.set(
     {
@@ -53,10 +55,6 @@ vim.opt.number = true
 vim.opt.numberwidth = 3
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 8
-vim.opt.shell = "pwsh"
-vim.opt.shellcmdflag = "-command"
-vim.opt.shellquote = ""
-vim.opt.shellxquote = " "
 vim.opt.shiftwidth = 8
 vim.opt.softtabstop = 0
 vim.opt.tabstop = 8
@@ -64,6 +62,13 @@ vim.opt.timeout = false
 vim.opt.ttimeout = true
 vim.opt.wrap = false
 
+-- Options for inferior OS.
+if is_windows then
+	vim.opt.shell = "pwsh"
+	vim.opt.shellcmdflag = "-command"
+	vim.opt.shellquote = ""
+	vim.opt.shellxquote = " "
+end
 
 -- Highlight characters on the 81st column.
 vim.fn.matchadd("ColorColumn", "\\(\\%81v.\\)", 81)
