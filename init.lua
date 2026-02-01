@@ -23,16 +23,6 @@ vim.keymap.set(
 )
 
 vim.keymap.set(
-    "n",
-    "x",
-    "\"_x",
-    {
-        noremap = false,
-        silent = true
-    }
-)
-
-vim.keymap.set(
     "v",
     "<",
     "<gv",
@@ -82,7 +72,7 @@ vim.fn.matchadd("ColorColumn", "\\(\\%81v.\\)", 81)
 -- Formatoptions.
 vim.api.nvim_create_autocmd(
     {
-        "VimEnter"
+        "BufEnter"
     },
     {
         pattern = {
@@ -91,6 +81,25 @@ vim.api.nvim_create_autocmd(
         callback = function()
             vim.opt.formatoptions:remove("o")
             vim.opt.formatoptions:remove("r")
+        end
+    }
+)
+
+
+-- C indenting.
+vim.api.nvim_create_autocmd(
+    {
+        "BufEnter"
+    },
+    {
+        pattern = {
+            '*.c',
+            '*.h',
+        },
+        callback = function()
+            vim.opt.indentexpr = ""
+            vim.opt.cindent = true
+            vim.opt.cinoptions = ":0"
         end
     }
 )
