@@ -104,7 +104,7 @@ vim.api.nvim_create_autocmd(
         callback = function()
             vim.opt.indentexpr = ""
             vim.opt.cindent = true
-            vim.opt.cinoptions = ":0"
+            vim.opt.cinoptions = ":0,l1,(0"
         end
     }
 )
@@ -237,6 +237,7 @@ require("lazy").setup({
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = {
 					"c",
+					"cpp",
 					"html",
 					"javascript",
 					"lua",
