@@ -13,7 +13,15 @@ vim.keymap.set(
         silent = true
     }
 )
-
+vim.keymap.set(
+    "i",
+    "<C-s>",
+    "<C-r>\"",
+    {
+	noremap = false,
+	silent = false
+    }
+)
 vim.keymap.set(
     "v",
     "<C-c>",
@@ -23,7 +31,6 @@ vim.keymap.set(
         silent = true
     }
 )
-
 vim.keymap.set(
     "v",
     "<",
@@ -33,7 +40,6 @@ vim.keymap.set(
         silent = false
     }
 )
-
 vim.keymap.set(
     "v",
     ">",
