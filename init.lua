@@ -1,13 +1,19 @@
-local is_windows = vim.fn.has("macunix") == false
+local is_windows = vim.fn.has("macunix") == 0
 
 -- Custom key maps/remaps/unmaps.
 vim.keymap.set(
-    {
-        "i",
-        "n"
-    },
+    "n",
     "<C-c>",
-    "<Nop>",
+    "\"+y",
+    {
+        noremap = false,
+        silent = true
+    }
+)
+vim.keymap.set(
+    "i",
+    "<C-c>",
+    "<Esc>\"+yya",
     {
         noremap = false,
         silent = true
@@ -71,9 +77,10 @@ vim.opt.wrap = false
 -- Options for inferior OS.
 if is_windows then
 	vim.opt.shell = "pwsh"
-	vim.opt.shellcmdflag = "-command"
+	vim.opt.shellcmdflag = "-NoProfile -command"
 	vim.opt.shellquote = ""
 	vim.opt.shellxquote = " "
+	vim.opt.shelltemp = false
 end
 
 -- Highlight characters on the 81st column.
@@ -261,7 +268,6 @@ require("lazy").setup({
 			})
 		end
 	},
-
 
 	-- Live-preview (Live HTML preview).
 	{
